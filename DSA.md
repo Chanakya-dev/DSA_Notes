@@ -1,6 +1,4 @@
-### **Comprehensive List of DSA Topics**
-Here’s a structured **DSA roadmap** covering essential **Data Structures and Algorithms** concepts.  
-
+### **Comprehensive List of DSA Topics** 
 ---
 
 ## **🔹 1. Data Structures (DS)**
