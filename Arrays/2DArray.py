@@ -26,15 +26,17 @@ class TwoDArray:
             print("Invalid row index!")
 
     def insert_at_index(self, row, col, value):
-        """Insert an element at a specific index."""
+        """Insert an element at a specific index by shifting elements instead of overwriting."""
         if 0 <= row < self.rows and 0 <= col < self.cols:
             if self.array[row][col] is None:
                 self.array[row][col] = value
             else:
-                print("Cell is already occupied! Overwriting.")
-                self.array[row][col] = value
+                for i in range(self.cols - 1, col, -1):
+                    self.array[row][i] = self.array[row][i - 1]
+                    self.array[row][col] = value
         else:
             print("Invalid row or column index!")
+
 
     def delete_at_end(self, row):
         """Delete the last element in a row."""
@@ -57,11 +59,14 @@ class TwoDArray:
             print("Invalid row index!")
 
     def delete_at_index(self, row, col):
-        """Delete an element at a specific index."""
+        """Delete an element at a specific index by shifting elements left."""
         if 0 <= row < self.rows and 0 <= col < self.cols:
-            self.array[row][col] = None
+            for i in range(col, self.cols - 1):
+                self.array[row][i] = self.array[row][i + 1]
+                self.array[row][self.cols - 1] = None
         else:
             print("Invalid position!")
+
 
     def update(self, row, col, value):
         """Update the value at a specific position."""
