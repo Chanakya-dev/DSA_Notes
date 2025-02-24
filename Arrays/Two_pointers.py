@@ -3,13 +3,13 @@ def two_pointer_sum(arr, target):
     while left < right:
         curr_sum = arr[left] + arr[right]
         if curr_sum == target:
-            return (left, right)  # Pair found
+            return (left, right)  
         elif curr_sum < target:
-            left += 1  # Increase sum by moving left pointer
+            left += 1  
         else:
-            right -= 1  # Decrease sum by moving right pointer
-    return -1  # No pair found
+            right -= 1  
+    return -1  
 
 arr = [1, 2, 3, 4, 6, 8, 10]
 target = 10
-print(two_pointer_sum(arr, target))  # Output: (2, 4)
+print(two_pointer_sum(arr, target))  
