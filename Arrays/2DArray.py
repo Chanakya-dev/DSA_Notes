@@ -26,17 +26,19 @@ class TwoDArray:
             print("Invalid row index!")
 
     def insert_at_index(self, row, col, value):
-        """Insert an element at a specific index by shifting elements instead of overwriting."""
-        if 0 <= row < self.rows and 0 <= col < self.cols:
-            if self.array[row][col] is None:
-                self.array[row][col] = value
-            else:
-                for i in range(self.cols - 1, col, -1):
-                    self.array[row][i] = self.array[row][i - 1]
-                    self.array[row][col] = value
-        else:
+        """Insert an element at a specific index by shifting elements to the right."""
+    
+        if not (0 <= row < self.rows and 0 <= col < self.cols):
             print("Invalid row or column index!")
+            return
 
+        if self.array[row][-1] is not None:
+            print("Row is full! Cannot insert.")
+            return
+
+        for i in range(self.cols - 1, col, -1):
+            self.array[row][i] = self.array[row][i - 1]
+        self.array[row][col] = value
 
     def delete_at_end(self, row):
         """Delete the last element in a row."""
